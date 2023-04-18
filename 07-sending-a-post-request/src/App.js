@@ -53,6 +53,18 @@ function App() {
     const data = await response.json();
     console.log(data);
   }
+  
+    async function deleteMovieHandler(movie) {
+    const response = await fetch('https://react-http-6b4a6.firebaseio.com/movies.json', {
+      method: 'DELETE',
+      body: JSON.stringify(movie),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+    const data = await response.json();
+    console.log(data);
+  }
 
   let content = <p>Found no movies.</p>;
 
@@ -75,6 +87,9 @@ function App() {
       </section>
       <section>
         <button onClick={fetchMoviesHandler}>Fetch Movies</button>
+      </section>
+      <section>
+        <button onClick={deleteMoviesHandler}>Delete Movies</button>
       </section>
       <section>{content}</section>
     </React.Fragment>
